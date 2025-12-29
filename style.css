@@ -1,0 +1,784 @@
+/* --- 공통 변수 설정 --- */
+:root {
+    --navy: #0a1128;
+    --gold: #d4af37;
+    --red: #7c0a0a;
+    --white: #ffffff;
+    --gray: #f4f4f4;
+    --transition: all 0.3s ease;
+}
+
+/* --- 초기화 --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans KR', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.section-padding { padding: 100px 0; }
+.text-gold { color: var(--gold) !important; }
+.text-light { color: var(--white) !important; }
+.bg-navy { background-color: var(--navy); }
+.bg-red { background-color: var(--red); }
+.text-center { text-align: center; }
+
+/* --- 헤더 --- */
+header {
+    background-color: var(--navy);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%; top: 0; z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; text-decoration: none; }
+.shield-logo {
+    background-color: var(--red);
+    color: var(--gold);
+    padding: 10px 15px;
+    border: 2px solid var(--gold);
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
+    margin-right: 15px;
+}
+.logo-name { color: var(--gold); font-family: 'Cinzel'; font-weight: 700; font-size: 1.2rem; }
+.nav-menu ul { display: flex; list-style: none; gap: 20px; }
+.nav-menu a { color: var(--white); text-decoration: none; font-size: 0.95rem; transition: var(--transition); }
+.nav-menu a:hover { color: var(--gold); }
+.hamburger { display: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+/* --- 히어로 섹션 --- */
+#hero {
+    height: 100vh;
+    background: url('img/academy_main.jpg') center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; text-align: center; color: var(--white);
+}
+.hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+.hero-content { position: relative; z-index: 1; }
+.hero-content h1 { font-family: 'Cinzel'; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 40px; color: var(--gold); }
+
+.btn {
+    padding: 15px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: var(--transition);
+}
+.btn-volo { background-color: var(--gold); color: var(--navy); border: 2px solid var(--gold); margin-right: 15px; }
+.btn-volo:hover { background-color: transparent; color: var(--gold); }
+.btn-outline { border: 2px solid var(--white); color: var(--white); }
+.btn-outline:hover { background-color: var(--white); color: var(--navy); }
+
+/* --- 소개 섹션 --- */
+.about-flex { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+.about-text { flex: 2; }
+.about-text .highlight { font-size: 1.5rem; color: var(--red); font-weight: 700; margin-bottom: 20px; }
+.about-text p { margin-bottom: 15px; font-size: 1.05rem; }
+.section-title { font-family: 'Cinzel'; font-size: 2.8rem; margin-bottom: 40px; color: var(--navy); }
+.section-title.left { text-align: left; }
+.about-stats { flex: 1; display: grid; grid-template-columns: 1fr; gap: 20px; }
+.stat-item { background: var(--gray); padding: 30px; border-left: 5px solid var(--gold); text-align: center; }
+.stat-num { font-size: 2rem; font-weight: 700; color: var(--navy); display: block; }
+
+/* --- 전공 섹션 --- */
+.major-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+.major-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: var(--transition); }
+.major-card:hover { transform: translateY(-10px); }
+.major-img { position: relative; height: 200px; overflow: hidden; }
+.major-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+.img-overlay { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: var(--gold); padding: 5px 12px; font-size: 0.8rem; }
+.major-content { padding: 25px; }
+.major-content h3 { font-family: 'Cinzel'; color: var(--navy); margin-bottom: 10px; }
+.m-slogan { font-style: italic; color: var(--red); font-size: 0.85rem; margin-bottom: 15px; display: block; }
+.curriculum { margin-top: 15px; padding-left: 20px; list-style: square; font-size: 0.9rem; }
+
+/* --- 교수진 섹션 --- */
+.faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.faculty-card { background: var(--gray); padding: 20px; border: 1px solid #ddd; text-align: center; transition: var(--transition); }
+.faculty-card img { width: 100%; height: 300px; object-fit: cover; margin-bottom: 15px; filter: grayscale(50%); transition: var(--transition); }
+.faculty-card:hover img { filter: grayscale(0%); }
+.faculty-info h4 { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--navy); }
+.faculty-info span { color: var(--red); font-weight: bold; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+.faculty-info p { font-size: 0.85rem; color: #666; }
+
+/* --- 입학 섹션 --- */
+.admission-msg { font-size: 1.3rem; margin-bottom: 50px; }
+.admission-steps { display: flex; justify-content: space-around; margin-bottom: 60px; flex-wrap: wrap; gap: 30px; }
+.step-num { font-size: 3rem; font-family: 'Cinzel'; color: var(--gold); display: block; }
+.btn-volo-large { background: var(--gold); color: var(--navy); padding: 20px 50px; font-size: 1.5rem; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; font-weight: bold; border-radius: 5px; }
+
+/* --- 푸터 --- */
+footer { background: #050a1b; color: #888; padding: 70px 0 0; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+.footer-grid h3, .footer-grid h4 { color: var(--gold); font-family: 'Cinzel'; margin-bottom: 20px; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #888; text-decoration: none; transition: var(--transition); }
+.footer-links a:hover { color: var(--gold); padding-left: 5px; }
+.footer-bottom { border-top: 1px solid #222; padding: 25px 0; text-align: center; font-size: 0.8rem; }
+
+/* --- 반응형 --- */
+@media (max-width: 768px) {
+    .nav-menu { position: fixed; right: -100%; top: 60px; background: var(--navy); width: 100%; height: 100vh; transition: 0.5s; }
+    .nav-menu.active { right: 0; }
+    .nav-menu ul { flex-direction: column; align-items: center; padding-top: 50px; }
+    .hamburger { display: block; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .section-title { font-size: 2rem; }
+    .about-flex { flex-direction: column; }
+}
+/* Hero Section Layout */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+
+/* 배경 이미지 처리: 꽉 차게 & 살짝 줌 애니메이션 */
+.hero-bg-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) contrast(1.1); /* 이미지 가독성 조절 */
+    animation: slowZoom 20s infinite alternate;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(10,17,40,0.2) 0%, rgba(10,17,40,0.8) 100%);
+}
+
+/* 타이틀 및 텍스트 스타일링 */
+.hero-badge {
+    font-family: 'Cinzel', serif;
+    color: #d4af37; /* Gold */
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* 반응형 폰트 크기 */
+    line-height: 1.2;
+    margin-bottom: 25px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.highlight {
+    color: #d4af37;
+    position: relative;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+}
+
+/* 버튼 디자인 개선 */
+.btn-volo {
+    background: #d4af37;
+    color: #0a1128 !important;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn-volo:hover {
+    background: transparent;
+    color: #d4af37 !important;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+/* 애니메이션 효과 */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* 스크롤 가이드 아이콘 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    color: #d4af37;
+    letter-spacing: 2px;
+}
+
+.mouse {
+    width: 20px; height: 35px;
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: #d4af37;
+    position: absolute;
+    left: 50%; top: 20%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    animation: scrollMove 2s infinite;
+}
+
+@keyframes scrollMove {
+    0% { opacity: 1; top: 20%; }
+    100% { opacity: 0; top: 60%; }
+}
+
+/* 헤더 전체 스타일 */
+#main-header {
+    background-color: rgba(10, 17, 40, 0.95); /* Deep Navy */
+    backdrop-filter: blur(10px); /* 반투명 효과 */
+    border-bottom: 2px solid #d4af37; /* Gold Line */
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* 브랜드 로고 영역 */
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.logo-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.academy-name {
+    font-family: 'Cinzel', serif;
+    color: #d4af37; /* Gold */
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.academy-motto {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* 네비게이션 메뉴 */
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 0; height: 1px;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #d4af37;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* '입학 안내' 특별 강조 */
+.highlight-nav {
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 15px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.highlight-nav:hover {
+    background-color: #d4af37;
+    color: #0a1128 !important;
+}
+
+/* 햄버거 버튼 스타일 개선 */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger .bar {
+    width: 25px; height: 2px;
+    background-color: #d4af37;
+    transition: 0.3s;
+}
+
+@media (max-width: 992px) {
+    .nav-menu { display: none; } /* 모바일에서는 별도의 JS로 제어 */
+    .hamburger { display: flex; }
+    .academy-name { font-size: 1.1rem; }
+}
+/* About Section 전용 스타일 */
+.about-main-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+/* 이미지 프레임 디자인 */
+.about-media-frame {
+    flex: 1;
+    position: relative;
+}
+
+.image-border {
+    position: relative;
+    padding: 15px;
+    border: 1px solid #d4af37; /* Gold Line */
+    background: #fff;
+    box-shadow: 20px 20px 0px rgba(10, 17, 40, 0.05); /* Navy Shadow */
+}
+
+.about-img {
+    width: 100%;
+    display: block;
+    filter: sepia(20%); /* 고풍스러운 느낌 */
+    transition: 0.5s;
+}
+
+.image-overlay-text {
+    position: absolute;
+    bottom: 30px;
+    right: -10px;
+    background: #8b0000; /* Imperial Red */
+    color: #d4af37;
+    padding: 5px 15px;
+    font-family: 'Cinzel';
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* 텍스트 및 슬로건 스타일 */
+.about-description {
+    flex: 1.2;
+}
+
+.mission-statement {
+    font-size: 1.5rem;
+    color: #8b0000;
+    font-weight: 700;
+    border-left: 4px solid #d4af37;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.description-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* 스탯 그리드 개선 */
+.about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-bottom: 3px solid #d4af37;
+    transition: 0.3s;
+}
+
+.stat-box:hover {
+    background: #101835;
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+.stat-num {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Cinzel';
+    color: #d4af37;
+}
+
+/* 반응형 처리 */
+@media (max-width: 992px) {
+    .about-main-content {
+        flex-direction: column;
+    }
+    .image-border {
+        margin-bottom: 30px;
+    }
+}
+/* 캠퍼스 시설 섹션 전체 스타일 */
+.campus-section {
+    position: relative;
+    background: url('campus_bg.png') center/cover no-repeat fixed; /* 로컬 배경 이미지 */
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.campus-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 17, 40, 0.85); /* 네이비 톤 덮개로 가독성 확보 */
+}
+
+.relative-z { position: relative; z-index: 2; }
+
+/* 시설 그리드 레이아웃 */
+.campus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* 시설 카드 디자인 */
+.campus-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.4s ease, border 0.4s ease;
+}
+
+.campus-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid #d4af37;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.campus-img-box {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.campus-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.campus-card:hover .campus-img-box img {
+    transform: scale(1.1);
+}
+
+.campus-info {
+    padding: 25px;
+}
+
+.campus-info h4 {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campus-info p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 타이틀 언더라인 (골드) */
+.title-underline.gold {
+    width: 80px;
+    height: 2px;
+    background: #d4af37;
+    margin: 20px auto;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .campus-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* 본관 섹션 스타일 */
+.main-building-section {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.main-building-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.full-bg-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4); /* 텍스트 가독성 */
+}
+
+.main-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--navy));
+}
+
+.main-sanctum-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.top-label {
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.main-lead {
+    font-size: 1.3rem;
+    max-width: 900px;
+    margin: 30px auto 50px;
+    line-height: 1.8;
+}
+
+/* 본관 특징 아이콘 배치 */
+.main-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.m-feature {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 2px solid var(--gold);
+}
+
+.m-feature-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.m-feature h4 { font-family: 'Cinzel'; margin-bottom: 10px; }
+.m-feature p { font-size: 0.9rem; color: #ccc; }
+
+/* 캠퍼스 그리드 서브 타이틀 */
+.sub-section-title {
+    text-align: center;
+    font-family: 'Cinzel';
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 50px;
+}
+
+.bg-navy-dark { background-color: #050a1b; }
+/* 특징 아이콘/이미지 공통 영역 */
+.m-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.m-feature:hover {
+    transform: translateY(-5px);
+}
+
+/* 분수 이미지 전용 프레임 */
+.m-feature-img-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #d4af37; /* 제국 골드 테두리 */
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.m-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 원에 꽉 차도록 설정 */
+    display: block;
+}
+
+/* 이미지 위에 살짝 어두운 느낌을 주어 텍스트와 조화롭게 만듦 */
+.img-inner-shadow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.m-feature h4 {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.m-feature p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+/* 지도 섹션 스타일 */
+#map-section {
+    background-color: #fdfaf3; /* 고풍스러운 종이 질감 느낌의 배경색 */
+}
+
+.map-frame {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #d4af37;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.map-inner-border {
+    border: 2px solid #101835; /* 네이비 안쪽 테두리 */
+    position: relative;
+    line-height: 0; /* 이미지 하단 공백 제거 */
+    overflow: hidden;
+}
+
+.academy-map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* 지도 이미지 호버 효과 */
+.map-frame:hover .academy-map-img {
+    transform: scale(1.02);
+}
+
+.map-caption {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.map-caption i {
+    color: #8b0000;
+    margin-right: 5px;
+}
+
+/* 지도 위 가상 핀 효과 (좌표는 이미지에 맞게 조정 필요) */
+.map-pin {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #8b0000;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.map-pin span {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #101835;
+    color: #d4af37;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    border-radius: 3px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.map-pin:hover span {
+    opacity: 1;
+}
+
