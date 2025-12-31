@@ -67,8 +67,8 @@ header {
 }
 .btn-volo { background-color: var(--gold); color: var(--navy); border: 2px solid var(--gold); margin-right: 15px; }
 .btn-volo:hover { background-color: transparent; color: var(--gold); }
-.btn-outline { border: 2px solid var(--white); color: var(--white); }
-.btn-outline:hover { background-color: var(--white); color: var(--navy); }
+.btn-outline { border: 2px solid var(--red); background-color: var(--red); color: var(--gold); }
+.btn-outline:hover { background-color: transparent; color: var(--white); }
 
 /* --- 소개 섹션 --- */
 .about-flex { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
